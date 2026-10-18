@@ -145,8 +145,8 @@ staffsync/
 
 ### 1. Clone & Enter Project
 ```bash
-git clone https://github.com/en24cs3010063-blip/StaffSync..git
-cd StaffSync.
+git clone https://github.com/en24cs3010063-blip/StaffSync.git
+cd StaffSync
 ```
 
 ### 2. Setup Server
