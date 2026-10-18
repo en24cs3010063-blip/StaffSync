@@ -43,6 +43,34 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'));
 }
 
+// Root index endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'StaffSync HRMS Backend REST API is Running Successfully',
+    environment: process.env.NODE_ENV || 'production',
+    system: 'StaffSync HRMS API v1.0.0',
+    healthCheck: '/api/health',
+    endpoints: {
+      auth: '/api/auth/login',
+      me: '/api/auth/me',
+      employees: '/api/employees',
+      departments: '/api/departments',
+      attendance: '/api/attendance',
+      leaves: '/api/leaves',
+      announcements: '/api/announcements',
+      trainings: '/api/trainings',
+      analytics: '/api/analytics',
+      notifications: '/api/notifications',
+    },
+    demoAccounts: {
+      hr: 'hr@staffsync.demo',
+      manager: 'manager@staffsync.demo',
+      employee: 'employee@staffsync.demo',
+    },
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({
