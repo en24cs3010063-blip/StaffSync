@@ -145,8 +145,8 @@ staffsync/
 
 ### 1. Clone & Enter Project
 ```bash
-git clone https://github.com/USERNAME/staffsync-mern-hrms.git
-cd staffsync-mern-hrms
+git clone https://github.com/en24cs3010063-blip/StaffSync..git
+cd StaffSync.
 ```
 
 ### 2. Setup Server
