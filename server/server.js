@@ -45,6 +45,53 @@ if (process.env.NODE_ENV !== 'test') {
 
 // Root index endpoint
 app.get('/', (req, res) => {
+  if (req.accepts('html')) {
+    return res.send(`
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>StaffSync API | Live Server</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+        <style>
+          body { font-family: 'Inter', system-ui, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 40px 20px; display: flex; justify-content: center; align-items: center; min-height: 80vh; }
+          .card { max-width: 650px; width: 100%; background: #1e293b; border-radius: 24px; padding: 40px; border: 1px solid #334155; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
+          .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(16,185,129,0.15); color: #34d399; padding: 6px 14px; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 20px; border: 1px solid rgba(16,185,129,0.3); }
+          h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 800; color: #ffffff; }
+          p { color: #94a3b8; font-size: 14px; line-height: 1.6; margin: 0 0 24px 0; }
+          .endpoint-box { background: #0f172a; border-radius: 16px; padding: 20px; border: 1px solid #334155; margin-bottom: 24px; }
+          .endpoint-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: #818cf8; font-weight: 700; margin-bottom: 12px; }
+          .endpoint-item { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #1e293b; color: #cbd5e1; }
+          .endpoint-item:last-child { border-bottom: none; }
+          .endpoint-item code { color: #a5b4fc; font-weight: 600; font-family: monospace; font-size: 12px; }
+          .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 24px; background: #4f46e5; color: #ffffff; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 14px; transition: 0.2s; }
+          .btn:hover { background: #4338ca; }
+        </style>
+      </head>
+      <body>
+        <div class="card">
+          <div class="badge">● Server Online & Operational</div>
+          <h1>StaffSync HRMS REST API</h1>
+          <p>The backend application is running live on Render with active MongoDB database connectivity, automated seeding, and JSON Web Token (JWT) role authorization.</p>
+          <div class="endpoint-box">
+            <div class="endpoint-title">Core API Endpoints</div>
+            <div class="endpoint-item"><span>System Health</span><code><a href="/api/health" style="color:#a5b4fc; text-decoration:none;">/api/health</a></code></div>
+            <div class="endpoint-item"><span>Authentication (POST)</span><code>/api/auth/login</code></div>
+            <div class="endpoint-item"><span>Employee Directory</span><code>/api/employees</code></div>
+            <div class="endpoint-item"><span>Attendance Station</span><code>/api/attendance</code></div>
+            <div class="endpoint-item"><span>Leave Management</span><code>/api/leaves</code></div>
+            <div class="endpoint-item"><span>HR Analytics</span><code>/api/analytics/admin</code></div>
+          </div>
+          <a href="/api/health" class="btn">Inspect System Health Status →</a>
+        </div>
+      </body>
+      </html>
+    `);
+  }
+
   res.status(200).json({
     success: true,
     message: 'StaffSync HRMS Backend REST API is Running Successfully',
